@@ -2,7 +2,7 @@
  * Start Configuration
  */
 
-var checkCookiesForDiscrepanciesInterval = 30000; // milliseconds
+var checkCookiesForDiscrepanciesInterval = 10000; // milliseconds
 
 // gtag("config", "GA_MEASUREMENT_ID", {
 //   "cookie_prefix": "",
