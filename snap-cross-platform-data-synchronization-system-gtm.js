@@ -74,7 +74,7 @@ function getCookie(variableName) {
       return unescape(document.cookie.substring(variableNameIndexStart, variableNameIndexEnd));
     }
   }
-  return "";
+  return null;
 }
 
 function checkCookiesForDiscrepanciesAgainstStorageSystems() {
@@ -219,8 +219,8 @@ window.setInterval(function() {
   var lastUpdatedTimestamp = Date.now();
   for (var i = 0; i < variableNames.length; i++) {
     console.log("Scanning for discrepancies for variable: " + variableNames[i]);
-    var regexMatchCookieName = new RegExp("/^(.*;)?\s*"+ variableNames[i] +"\s*=\s*[^;]+(.*)?$/"); 
-    if (document.cookie.match(regexMatchCookieName)) {
+    // var regexMatchCookieName = new RegExp('/^(.*;)?\s*'+ variableNames[i] +'\s*=\s*[^;]+(.*)?$/');
+    if (getCookie(variableNames[i]) !== null) {
       console.log("Cookie '"+ variableNames[i] +"' does exist, but let's see if it matches what's in localStorage (because localStorage will match the GTM Data Layer and we want to make sure GTM Data Layer is up-to-date)");
       // Cookie does exist, but let's see if it matches what's in localStorage (because localStorage will match the GTM Data Layer and we want to make sure GTM Data Layer is up-to-date)
       if (typeof(Storage) !== "undefined") {
