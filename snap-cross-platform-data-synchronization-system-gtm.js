@@ -184,9 +184,10 @@ function checkQueryStringForDiscrepanciesAgainstStorageSystems() {
 
 /*
  * Run cookie discrepancies checker at a pre-configured interval
+ * We have to drop the whole block of code here as an anonymouse function
+ * as opposed to just firing a scoped function, because CSP blows up with
+ * a script-src eval error
  */
-
-var checkCookiesForDiscrepanciesAgainstStorageSystemsVariable = checkCookiesForDiscrepanciesAgainstStorageSystems();
 
 window.setInterval(function() {
   console.log("Running function checkCookiesForDiscrepanciesAgainstStorageSystems()");
@@ -247,7 +248,7 @@ window.setInterval(function() {
 }, checkCookiesForDiscrepanciesInterval);
 
 /*
-  * Run query string parameter discrepancies checker at page load time
-  */
+ * Run query string parameter discrepancies checker at page load time
+ */
 
 checkQueryStringForDiscrepanciesAgainstStorageSystems();
