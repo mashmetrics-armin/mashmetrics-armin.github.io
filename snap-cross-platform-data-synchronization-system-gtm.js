@@ -226,7 +226,7 @@ window.setInterval(function() {
       // Cookie does exist, but let's see if it matches what's in localStorage (because localStorage will match the GTM Data Layer and we want to make sure GTM Data Layer is up-to-date)
       if (typeof(Storage) !== "undefined") {
         if (window.localStorage.getItem(variableNames[i]) !== null) {
-          if (window.localStorage.getItem(variableNames[i] !== getCookie(variableNames[i]))) {
+          if (window.localStorage.getItem(variableNames[i]) !== getCookie(variableNames[i])) {
             console.log("Cookie '"+ variableNames[i] +"' does not match with corresponding localStorage value, updating storage systems with Cookie value");
             // Cookie value does not match with corresponding localStorage value, updating storage systems with Cookie value
             synchronizeCookieWithStorageSystems(variableNames[i], getCookie(variableNames[i]), lastUpdatedTimestamp);
