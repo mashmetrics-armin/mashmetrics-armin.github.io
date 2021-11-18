@@ -54,6 +54,7 @@ function setCookie(variableName, variableValue, expirationInDays) {
   var expirationDate = new Date();
   var expirationInMilliseconds = expirationInDays * 24 * 60 * 60 * 1000;
   expirationDate.setTime(expirationDate.getTime() + expirationInMilliseconds);
+
   var cookieString = variableName + "=" + variableValue + "; expires=" + expirationDate.toGMTString() + "; path=" + path + "; domain=" + domain;
   document.cookie = cookieString;
 
@@ -128,7 +129,7 @@ function checkCookiesForDiscrepanciesAgainstStorageSystems() {
         if (window.localStorage.getItem(variableNames[i]) !== null) {
           // Cookie was deleted! Resetting it from localStorage now...
           setCookie(variableNames[i], getCookie(variableNames[i]), null);
-          setCookie(variableNames[i] + "LastUpdated", getCookie(variableNames[i] + "LastUpdated"));
+          // setCookie(variableNames[i] + "LastUpdated", getCookie(variableNames[i] + "LastUpdated"));
         }
       }
     }
@@ -246,7 +247,7 @@ window.setInterval(function() {
           console.log("Cookie '"+ variableNames[i] +"' was deleted! Resetting it from localStorage now.");
           // Cookie was deleted! Resetting it from localStorage now...
           setCookie(variableNames[i], getCookie(variableNames[i]), null);
-          setCookie(variableNames[i] + "LastUpdated", getCookie(variableNames[i] + "LastUpdated"));
+          // setCookie(variableNames[i] + "LastUpdated", getCookie(variableNames[i] + "LastUpdated"));
         }
         else {
           console.log("'"+ variableNames[i] +"' does not exist in LocalStorage. Skipping this one.");
