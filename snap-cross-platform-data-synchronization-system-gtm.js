@@ -231,6 +231,9 @@ window.setInterval(function() {
             // Cookie value does not match with corresponding localStorage value, updating storage systems with Cookie value
             synchronizeCookieWithStorageSystems(variableNames[i], getCookie(variableNames[i]), lastUpdatedTimestamp);
           }
+          else {
+            console.log("Cookie '"+ variableNames[i] +"' matches with corresponding localStorage value. No need to update storage systems.");
+          }
         }
         else {
           console.log("We don't have a value in localStorage for '"+ variableNames[i] +"', meaning it must be a new cookie. So let's synchronize it to localStorage and GTM Data Layer");
