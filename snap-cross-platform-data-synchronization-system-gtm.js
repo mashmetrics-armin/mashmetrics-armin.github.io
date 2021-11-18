@@ -1,6 +1,6 @@
 /*
-  * Start Configuration
-  */
+ * Start Configuration
+ */
 
 var checkCookiesForDiscrepanciesInterval = 100; // milliseconds
 
@@ -11,13 +11,13 @@ var checkCookiesForDiscrepanciesInterval = 100; // milliseconds
 // });
 
 /*
-  * End Configuration
-  */
+ * End Configuration
+ */
 
 
 /*
-  * Start Helper Functions
-  */
+ * Start Helper Functions
+ */
 
 function synchronizeCookieWithStorageSystems(variableName, variableValue, timestamp) {
   console.log("Running function synchronizeCookieWithStorageSystems(" + variableName + ", " + variableValue + ", " + timestamp + ")");
@@ -177,14 +177,14 @@ function checkQueryStringForDiscrepanciesAgainstStorageSystems() {
 }
 
 /*
-  * End Helper Functions
-  */
+ * End Helper Functions
+ */
 
 /* -------------------------------- */
 
 /*
-  * Run cookie discrepancies checker at a pre-configured interval
-  */
+ * Run cookie discrepancies checker at a pre-configured interval
+ */
 
 var checkCookiesForDiscrepanciesAgainstStorageSystemsVariable = checkCookiesForDiscrepanciesAgainstStorageSystems();
 
