@@ -248,9 +248,9 @@ window.setInterval(function() {
           setCookie(variableNames[i], getCookie(variableNames[i]), null);
           setCookie(variableNames[i] + "LastUpdated", getCookie(variableNames[i] + "LastUpdated"));
         }
-      }
-      else {
-        console.log("'"+ variableNames[i] +"' does not exist in LocalStorage. Skipping this one.");
+        else {
+          console.log("'"+ variableNames[i] +"' does not exist in LocalStorage. Skipping this one.");
+        }
       }
     }
   }
