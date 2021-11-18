@@ -188,7 +188,7 @@ function checkQueryStringForDiscrepanciesAgainstStorageSystems() {
 
 var checkCookiesForDiscrepanciesAgainstStorageSystemsVariable = checkCookiesForDiscrepanciesAgainstStorageSystems();
 
-window.setInterval(checkCookiesForDiscrepanciesAgainstStorageSystems(), checkCookiesForDiscrepanciesInterval);
+window.setInterval("checkCookiesForDiscrepanciesAgainstStorageSystemsVariable", checkCookiesForDiscrepanciesInterval);
 
 /*
   * Run query string parameter discrepancies checker at page load time
