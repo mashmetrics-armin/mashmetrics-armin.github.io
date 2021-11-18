@@ -218,17 +218,21 @@ window.setInterval(function() {
   ];
   var lastUpdatedTimestamp = Date.now();
   for (var i = 0; i < variableNames.length; i++) {
+    console.log("Scanning for discrepancies for variable: " + variableNames[i]);
     var regexMatchCookieName = new RegExp("/^(.*;)?\s*"+ variableNames[i] +"\s*=\s*[^;]+(.*)?$/"); 
     if (document.cookie.match(regexMatchCookieName)) {
+      console.log("Cookie '"+ variableNames[i] +"' does exist, but let's see if it matches what's in localStorage (because localStorage will match the GTM Data Layer and we want to make sure GTM Data Layer is up-to-date)");
       // Cookie does exist, but let's see if it matches what's in localStorage (because localStorage will match the GTM Data Layer and we want to make sure GTM Data Layer is up-to-date)
       if (typeof(Storage) !== "undefined") {
         if (window.localStorage.getItem(variableNames[i]) !== null) {
           if (window.localStorage.getItem(variableNames[i] !== getCookie(variableNames[i]))) {
+            console.log("Cookie '"+ variableNames[i] +"' does not match with corresponding localStorage value, updating storage systems with Cookie value");
             // Cookie value does not match with corresponding localStorage value, updating storage systems with Cookie value
             synchronizeCookieWithStorageSystems(variableNames[i], getCookie(variableNames[i]), lastUpdatedTimestamp);
           }
         }
         else {
+          console.log("We don't have a value in localStorage for '"+ variableNames[i] +"', meaning it must be a new cookie. So let's synchronize it to localStorage and GTM Data Layer");
           // We don't have a value in localStorage for this cookie, meaning it must be a new cookie. So let's synchronize it to localStorage and GTM Data Layer
           synchronizeCookieWithStorageSystems(variableNames[i], getCookie(variableNames[i]), lastUpdatedTimestamp);
         }
