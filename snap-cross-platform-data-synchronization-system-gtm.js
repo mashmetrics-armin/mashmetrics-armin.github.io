@@ -249,6 +249,9 @@ window.setInterval(function() {
           setCookie(variableNames[i] + "LastUpdated", getCookie(variableNames[i] + "LastUpdated"));
         }
       }
+      else {
+        console.log("'"+ variableNames[i] +"' does not exist in LocalStorage. Skipping this one.");
+      }
     }
   }
   console.log("-------- End run for checkCookiesForDiscrepanciesAgainstStorageSystems --------");
