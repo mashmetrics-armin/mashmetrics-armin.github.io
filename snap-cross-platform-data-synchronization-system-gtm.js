@@ -239,9 +239,11 @@ window.setInterval(function() {
       }
     }
     else {
+      console.log("Cookie '"+ variableNames[i] +"' does not exist, see if we have it in localStorage.");
       // Cookie does not exist, see if we have it in localStorage
       if (typeof(Storage) !== "undefined") {
         if (window.localStorage.getItem(variableNames[i]) !== null) {
+          console.log("Cookie '"+ variableNames[i] +"' was deleted! Resetting it from localStorage now.");
           // Cookie was deleted! Resetting it from localStorage now...
           setCookie(variableNames[i], getCookie(variableNames[i]), null);
           setCookie(variableNames[i] + "LastUpdated", getCookie(variableNames[i] + "LastUpdated"));
