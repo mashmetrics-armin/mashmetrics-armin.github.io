@@ -42,7 +42,9 @@ for (var i = 0; i < formInputFieldIds.length; i++) {
   var formInputField = document.getElementById(formInputFieldIds[i]);
   if (formInputField !== null) {
     formInputField.addEventListener("focusout", function(event) {
-      console.log(event.target.id + ": " + event.target.value);
+      var eventId = event.target.id;
+      var eventValue = event.target.value;
+      console.log(eventId + ": " + eventValue);
     });
   }
 }
@@ -54,12 +56,16 @@ for (var i = 0; i < formInputFieldIds.length; i++) {
 var formButtonsObjectKeys = Object.keys(formButtonsObject);
 for (var i = 0; i < formButtonsObjectKeys.length; i++) {
   var formButtonObjectKeyName = formButtonsObjectKeys[i];
+  console.log(formButtonObjectKeyName);
   var formButtonObjectKeyIds = formButtonsObject[formButtonObjectKeyName];
-  for (var i = 0; i < formButtonObjectKeyIds.length; i++) {
-    var formButton = document.getElementById(formButtonObjectKeyIds[i]);
+  console.log(formButtonObjectKeyIds);
+  for (var ii = 0; ii < formButtonObjectKeyIds.length; ii++) {
+    var formButton = document.getElementById(formButtonObjectKeyIds[ii]);
     if (formButton !== null) {
+      console.log(formButton);
       formButton.addEventListener("click", function(event) {
-        console.log("Field " + formButtonObjectKeyName + " value was chosen by clicking button with ID " + event.target.id);
+        var eventId = event.target.id;
+        console.log("Field " + formButtonObjectKeyName + " value was chosen by clicking button with ID " + eventId);
       });
     }
   }
