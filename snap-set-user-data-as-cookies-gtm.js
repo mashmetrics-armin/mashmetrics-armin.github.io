@@ -34,7 +34,7 @@ function addListenersForFormInputFields() {
     }
   }
 }
-addListenersForFormInputFields()
+addListenersForFormInputFields();
 
 /*
  * Add listeners for form buttons
