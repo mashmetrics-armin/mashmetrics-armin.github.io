@@ -2,7 +2,7 @@
  * Start Configuration
  */
 
-var formFieldIds = [
+var formInputFieldIds = [
   "firstName",
   "lastName",
   "mobilePhoneNumber",
@@ -34,10 +34,10 @@ var formButtonIds = [
  * Add listeners for form input fields
  */
 
-for (var i = 0; i < formFieldIds.length; i++) {
-  var formField = document.getElementById(formFieldIds[i]);
-  if (formField !== null) {
-    formField.addEventListener("focusout", function(event) {
+for (var i = 0; i < formInputFieldIds.length; i++) {
+  var formInputField = document.getElementById(formInputFieldIds[i]);
+  if (formInputField !== null) {
+    formInputField.addEventListener("focusout", function(event) {
       console.log(event.target.id + ": " + event.target.value);
     });
   }
@@ -51,7 +51,7 @@ for (var i = 0; i < formButtonIds.length; i++) {
   var formButton = document.getElementById(formButtonIds[i]);
   if (formButton !== null) {
     formButton.addEventListener("click", function(event) {
-      console.log(event.target.id + " was clicked");
+      console.log("Button ID " + event.target.id + " was clicked");
     });
   }
 }
