@@ -17,14 +17,18 @@ var formInputFieldIds = [
   "socialSecurityNumberOrItin",
 ];
 
-var formButtonIds = [
-  "rentbtn",
-  "ownbtn",
-  "lessthanonebtn",
-  "onetothreebtn",
-  "threetofivebtn",
-  "fiveormorebtn",
-];
+var formButtonsObject = {
+  "rentOrOwn": [
+    "rentbtn",
+    "ownbtn",
+  ],
+  "yearsAtThisAddress": [
+    "lessthanonebtn",
+    "onetothreebtn",
+    "threetofivebtn",
+    "fiveormorebtn",
+  ]
+};
 
 /*
  * End Configuration
@@ -47,11 +51,16 @@ for (var i = 0; i < formInputFieldIds.length; i++) {
  * Add listeners for form buttons
  */
 
-for (var i = 0; i < formButtonIds.length; i++) {
-  var formButton = document.getElementById(formButtonIds[i]);
-  if (formButton !== null) {
-    formButton.addEventListener("click", function(event) {
-      console.log("Button ID " + event.target.id + " was clicked");
-    });
+var formButtonsObjectKeys = Object.keys(formButtonsObject);
+for (var i = 0; i < formButtonsObjectKeys.length; i++) {
+  var formButtonObjectKeyName = formButtonsObjectKeys[i];
+  var formButtonObjectKeyIds = formButtonsObject[formButtonObjectKeyName];
+  for (var i = 0; i < formButtonObjectKeyIds.length; i++) {
+    var formButton = formButtonObjectKeyIds[i];
+    if (formButton !== null) {
+      formButton.addEventListener("click", function(event) {
+        console.log("Field " + formButtonObjectKeyName + " value was chosen by clicking button with ID " + event.target.id);
+      });
+    }
   }
 }
