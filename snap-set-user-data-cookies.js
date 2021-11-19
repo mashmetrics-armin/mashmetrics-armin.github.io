@@ -56,16 +56,20 @@ for (var i = 0; i < formInputFieldIds.length; i++) {
 var formButtonsObjectKeys = Object.keys(formButtonsObject);
 for (var i = 0; i < formButtonsObjectKeys.length; i++) {
   var formButtonObjectKeyName = formButtonsObjectKeys[i];
-  console.log(formButtonObjectKeyName);
   var formButtonObjectKeyIds = formButtonsObject[formButtonObjectKeyName];
-  console.log(formButtonObjectKeyIds);
   for (var ii = 0; ii < formButtonObjectKeyIds.length; ii++) {
     var formButton = document.getElementById(formButtonObjectKeyIds[ii]);
     if (formButton !== null) {
-      console.log(formButton);
       formButton.addEventListener("click", function(event) {
         var eventId = event.target.id;
-        console.log("Field " + formButtonObjectKeyName + " value was chosen by clicking button with ID " + eventId);
+        var formButtonsObjectKeys = Object.keys(formButtonsObject);
+        for (var i = 0; i < formButtonsObjectKeys.length; i++) {
+          var formButtonObjectKeyName = formButtonsObjectKeys[i];
+          var formButtonObjectKeyIds = formButtonsObject[formButtonObjectKeyName];
+          if (formButtonObjectKeyIds.includes(eventId)) {
+            console.log(formButtonObjectKeyName + ": " + eventId);
+          }
+        }
       });
     }
   }
