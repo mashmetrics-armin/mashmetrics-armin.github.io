@@ -56,7 +56,7 @@ for (var i = 0; i < formButtonsObjectKeys.length; i++) {
   var formButtonObjectKeyName = formButtonsObjectKeys[i];
   var formButtonObjectKeyIds = formButtonsObject[formButtonObjectKeyName];
   for (var i = 0; i < formButtonObjectKeyIds.length; i++) {
-    var formButton = formButtonObjectKeyIds[i];
+    var formButton = document.getElementById(formButtonObjectKeyIds[i]);
     if (formButton !== null) {
       formButton.addEventListener("click", function(event) {
         console.log("Field " + formButtonObjectKeyName + " value was chosen by clicking button with ID " + event.target.id);
