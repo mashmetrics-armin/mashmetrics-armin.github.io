@@ -3,13 +3,13 @@
  */
 
 var formInputFields = [
-  {"id": "firstName"},
+  {"name": "First Name"},
   {"id": "lastName"},
   {"name": "Mobile Phone Number"},
   {"id": "emailAddress"},
   {"id": "verificationCode"},
   {"id": "homeAddress"},
-  {"id": "zipCode"},
+  {"name": "Zip Code"},
   {"id": "apartment/suite"},
   {"id": "dateOfBirth"},
   {"id": "driverLicenseNumber"},
@@ -29,7 +29,7 @@ for (var i = 0; i < formInputFields.length; i++) {
       var eventElementId = event.target.id;
       var eventElementName = event.target.name;
       var eventElementValue = event.target.value;
-      console.log("eventElementId: " + eventElementId + "; eventElementName: " + eventElementName + "; eventElementValue: " + eventElementValue);
+      console.log("eventElementId: " + eventElementId + " | eventElementName: " + eventElementName + " | eventElementValue: " + eventElementValue);
     });
   }
 }
