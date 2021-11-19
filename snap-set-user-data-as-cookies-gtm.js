@@ -26,9 +26,10 @@ for (var i = 0; i < formInputFields.length; i++) {
   if (formInputField !== null) {
     console.log("Adding listener for element matching querySelector(" + elementQuerySelector + ")");
     formInputField.addEventListener("focusout", function(event) {
-      var eventId = event.target.id;
-      var eventValue = event.target.value;
-      console.log(eventId + ": " + eventValue);
+      var eventElementId = event.target.id;
+      var eventElementName = event.target.name;
+      var eventElementValue = event.target.value;
+      console.log("eventElementId: " + eventElementId + "; eventElementName: " + eventElementName + "; eventElementValue: " + eventElementValue);
     });
   }
 }
