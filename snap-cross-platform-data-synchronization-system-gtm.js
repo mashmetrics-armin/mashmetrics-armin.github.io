@@ -191,7 +191,7 @@ window.setInterval(function() {
         if (window.localStorage.getItem(variableNames[i]) !== null) {
           console.log("Cookie '"+ variableNames[i] +"' was deleted! Resetting it from localStorage now.");
           // Cookie was deleted! Resetting it from localStorage now...
-          setCookie(variableNames[i], getCookie(variableNames[i]), null);
+          setCookie(variableNames[i], window.localStorage.getItem(variableNames[i]), window.localStorage.getItem(variableNames[i] + "LastUpdated"));
           // setCookie(variableNames[i] + "LastUpdated", getCookie(variableNames[i] + "LastUpdated"));
         }
         else {
