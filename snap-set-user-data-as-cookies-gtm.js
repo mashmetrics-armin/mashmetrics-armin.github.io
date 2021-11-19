@@ -2,26 +2,29 @@
  * Add listeners for form input fields
  */
 
-var formInputFieldIds = [
-  "firstName",
-  "lastName",
-  "mobilePhoneNumber",
-  "emailAddress",
-  "verificationCode",
-  "homeAddress",
-  "zipCode",
-  "apartment/suite",
-  "dateOfBirth",
-  "driverLicenseNumber",
-  "state",
-  "socialSecurityNumberOrItin",
+var formInputFields = [
+  {"id": "firstName"},
+  {"id": "lastName"},
+  {"name": "Mobile Phone Number"},
+  {"id": "emailAddress"},
+  {"id": "verificationCode"},
+  {"id": "homeAddress"},
+  {"id": "zipCode"},
+  {"id": "apartment/suite"},
+  {"id": "dateOfBirth"},
+  {"id": "driverLicenseNumber"},
+  {"id": "state"},
+  {"id": "socialSecurityNumberOrItin"},
 ];
 
-for (var i = 0; i < formInputFieldIds.length; i++) {
-  console.log(formInputFieldIds[i]);
-  var formInputField = document.getElementById(formInputFieldIds[i]);
+for (var i = 0; i < formInputFields.length; i++) {
+  var formElementObject = formInputFields[i];
+  var elementAttributeName = Object.keys(formElementObject);
+  var elementAttributeValue = formElementObject[elementAttributeName];
+  var elementQuerySelector = "[" + elementAttributeName + "='" + elementAttributeValue +"']";
+  var formInputField = document.querySelector(elementQuerySelector);
   if (formInputField !== null) {
-    console.log("Adding listener for: "+ formInputFieldIds[i]);
+    console.log("Adding listener for element matching querySelector(" + elementQuerySelector + ")");
     formInputField.addEventListener("focusout", function(event) {
       var eventId = event.target.id;
       var eventValue = event.target.value;
