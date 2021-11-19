@@ -1,5 +1,5 @@
 /*
- * Start Configuration
+ * Add listeners for form input fields
  */
 
 var formInputFieldIds = [
@@ -17,6 +17,23 @@ var formInputFieldIds = [
   "socialSecurityNumberOrItin",
 ];
 
+for (var i = 0; i < formInputFieldIds.length; i++) {
+  console.log(formInputFieldIds[i]);
+  var formInputField = document.getElementById(formInputFieldIds[i]);
+  if (formInputField !== null) {
+    console.log("Adding listener for: "+ formInputFieldIds[i]);
+    formInputField.addEventListener("focusout", function(event) {
+      var eventId = event.target.id;
+      var eventValue = event.target.value;
+      console.log(eventId + ": " + eventValue);
+    });
+  }
+}
+
+/*
+ * Add listeners for form buttons
+ */
+
 var formButtonsObject = {
   "rentOrOwn": [
     "rentbtn",
@@ -29,29 +46,6 @@ var formButtonsObject = {
     "fiveormorebtn",
   ]
 };
-
-/*
- * End Configuration
- */
-
-/*
- * Add listeners for form input fields
- */
-
-for (var i = 0; i < formInputFieldIds.length; i++) {
-  var formInputField = document.getElementById(formInputFieldIds[i]);
-  if (formInputField !== null) {
-    formInputField.addEventListener("focusout", function(event) {
-      var eventId = event.target.id;
-      var eventValue = event.target.value;
-      console.log(eventId + ": " + eventValue);
-    });
-  }
-}
-
-/*
- * Add listeners for form buttons
- */
 
 var formButtonsObjectKeys = Object.keys(formButtonsObject);
 for (var i = 0; i < formButtonsObjectKeys.length; i++) {
