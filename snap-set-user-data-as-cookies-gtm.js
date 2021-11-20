@@ -36,11 +36,68 @@ function addListenersForFormInputFields() {
 }
 addListenersForFormInputFields();
 
+/**********************************************/
+
 /*
  * Add listeners for form buttons
  */
 
-function addListenersForFormButtons() {
+function addClassToElement(querySelector, className) {
+  var element = document.querySelector(querySelector);
+  if (element !== null) {
+    var elementClasses = element.className;
+    elementClasses = elementClasses.split(" ");
+    if (!elementClasses.includes(className)) {
+      elementClasses.push(className);
+      elementClasses = elementClasses.join(" ");
+      element.className = elementClasses;
+    }
+  }
+}
+
+function removeClassFromElement(querySelector, className) {
+  var element = document.querySelector(querySelector);
+  if (element !== null) {
+    var elementClasses = element.className;
+    elementClasses = elementClasses.split(" ");
+    elementClasses = elementClasses.filter(function(e) { return e !== className });
+    elementClasses = elementClasses.join(" ");
+    element.className = elementClasses;
+  }
+}
+
+function scanAllFormButtonsAndSetCookieValues() {
+  var formButtonsObject = {
+    "rentOrOwn": [
+      "rentbtn",
+      "ownbtn",
+    ],
+    "yearsAtThisAddress": [
+      "lessthanonebtn",
+      "onetothreebtn",
+      "threetofivebtn",
+      "fiveormorebtn",
+    ]
+  };
+
+  var formButtonsObjectKeys = Object.keys(formButtonsObject);
+  for (var i = 0; i < formButtonsObjectKeys.length; i++) {
+    var formButtonObjectKeyName = formButtonsObjectKeys[i];
+    var formButtonFieldIds = formButtonsObject[formButtonObjectKeyName];
+    var formButtonHasSelection = false;
+    for (var ii = 0; ii < formButtonFieldIds.length; ii++) {
+      if (document.querySelector("#" + formButtonFieldIds[ii] + ".activeButtonListener.active") !== null) {
+        formButtonHasSelection = true;
+        console.log(formButtonObjectKeyName + ": " + formButtonFieldIds[ii]);
+      }
+    }
+    if (!formButtonHasSelection) {
+      console.log(formButtonObjectKeyName + ": (none)");
+    }
+  }
+}
+
+function addListenersToFormButtons() {
   var formButtonsObject = {
     "rentOrOwn": [
       "rentbtn",
@@ -61,19 +118,12 @@ function addListenersForFormButtons() {
     for (var ii = 0; ii < formButtonObjectKeyIds.length; ii++) {
       var formButton = document.getElementById(formButtonObjectKeyIds[ii]);
       if (formButton !== null) {
-        formButton.addEventListener("click", function(event) {
-          var eventId = event.target.id;
-          var formButtonsObjectKeys = Object.keys(formButtonsObject);
-          for (var i = 0; i < formButtonsObjectKeys.length; i++) {
-            var formButtonObjectKeyName = formButtonsObjectKeys[i];
-            var formButtonObjectKeyIds = formButtonsObject[formButtonObjectKeyName];
-            if (formButtonObjectKeyIds.includes(eventId)) {
-              console.log(formButtonObjectKeyName + ": " + eventId);
-            }
-          }
+        addClassToElement("#"+ formButtonObjectKeyIds[ii], "activeButtonListener");
+        formButton.addEventListener("focusout", function(event) {
+          scanAllFormButtonsAndSetCookieValues();
         });
       }
     }
   }
 }
-addListenersForFormButtons();
+addListenersToFormButtons();
